@@ -1,0 +1,282 @@
+/* =================================
+   रोहित जन सेवा केंद्र - Main Styles
+   ================================= */
+
+/* Base */
+html, body { 
+    font-family: 'Hind', sans-serif; 
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+/* Brand Colors */
+.bg-bob { background-color: #005aab; }
+.text-bob { color: #005aab; }
+.bg-orange-bob { background-color: #f05a22; }
+.text-orange-bob { color: #f05a22; }
+
+/* Hero Pattern */
+.hero-pattern { 
+    background-color: #f8fafc;
+    background-image: radial-gradient(#005aab 0.5px, transparent 0.5px); 
+    background-size: 20px 20px; 
+}
+
+/* WhatsApp Button Animation */
+.whatsapp-btn { animation: pulse 2s infinite; }
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* AI Button Float Animation */
+.ai-btn { animation: float 3s ease-in-out infinite; }
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Intro Popup Animation */
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal Overlays */
+#popup-overlay, 
+#modal-overlay, 
+#ai-modal-overlay, 
+#login-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+}
+
+/* Service Popup */
+#service-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 90%;
+    max-width: 320px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Edit Modal */
+#edit-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Login Modal */
+#login-modal {
+    display: none;
+    position: fixed;
+    z-index: 10002;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+}
+
+/* AI Modal */
+#ai-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 450px;
+    height: 600px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+/* Toast Notification */
+#toast-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 20000;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Service Popup Mobile */
+@media (max-width: 768px) {
+    #service-popup {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+/* Service List Item */
+.service-list-item {
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.service-list-item:hover {
+    background-color: rgba(0, 90, 171, 0.08);
+    color: #005aab;
+    transform: translateX(5px);
+}
+
+/* News Ticker Animation */
+.marquee-container { 
+    overflow: hidden; 
+    white-space: nowrap; 
+}
+
+.marquee-content { 
+    display: inline-block; 
+    animation: marquee 25s linear infinite; 
+}
+
+@keyframes marquee { 
+    0% { transform: translateX(100%); } 
+    100% { transform: translateX(-100%); } 
+}
+
+/* Mobile Menu Transition */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+
+#mobile-menu.active { 
+    transform: translateX(0); 
+}
+
+/* Admin Panel Utilities */
+.admin-view { display: none; }
+.admin-view.active { display: block; }
+.public-view.hidden { display: none; }
+
+/* Chat Styles */
+.chat-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.chat-user {
+    background-color: #005aab;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-ai {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+/* Typing Animation */
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Falling Animation */
+@keyframes fallDown {
+    0% {
+        transform: translate(-50%, -350px) scale(0.8);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+        transform: translate(-50%, -40px) scale(1);
+    }
+    85% {
+        opacity: 1;
+        transform: translate(-50%, 120px) scale(1);
+    }
+    100% {
+        transform: translate(-50%, 600px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.falling-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 85%;
+    max-width: 420px;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    animation: fallDown 4s ease-in-out forwards;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+}
