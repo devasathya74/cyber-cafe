@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# Rohit Jan Seva Kendra – Web App
 
-## Project info
+यह एक आधुनिक और responsive वेब एप्लीकेशन है, जिसे रोहित जन सेवा केंद्र के लिए बनाया गया है। यह ऐप ग्राहकों को उपलब्ध सेवाओं, बैंकिंग सुविधाओं और महत्वपूर्ण अपडेट्स की जानकारी देता है। इसमें Admin Panel और AI Assistant भी शामिल है।
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ मुख्य फीचर्स
 
-## How can I edit this code?
+### Public Website
+- मोबाइल और डेस्कटॉप फ्रेंडली UI (Tailwind CSS)
+- सेवाओं की लिस्ट और सर्च सुविधा
+- News Ticker और Animated Banking Logos
+- संपर्क जानकारी, मैप और WhatsApp बटन
 
-There are several ways of editing your application.
+### AI Assistant (Lovable AI)
+- सेवाओं और फीस से जुड़े सवालों के जवाब
+- बैंक/सरकारी कार्यालयों के लिए Application Letter Generator
 
-**Use Lovable**
+### Admin Panel
+- सुरक्षित Login (Firebase Auth)
+- सेवाएं Add / Edit / Delete
+- Shop Open/Close Status Control
+- Live News Ticker Update
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📂 Folder Structure
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+rohit-csc-center
+│
+├── index.html
+├── README.md
+├── api/
+│   └── ai-chat.js
+├── public/
+│   └── images/
+│       ├── image1.png
+│       ├── image2.png
+│       └── ... image20.png
+└── supabase/
+    └── functions/
+        └── ai-chat/
+            └── index.ts
 ```
 
-**Edit a file directly in GitHub**
+## 📸 Screenshots
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+![screen](https://github.com/user-attachments/assets/c50953e8-bc2c-445e-b270-549082752cbe)
 
-**Use GitHub Codespaces**
+<img width="1882" height="878" alt="screen3" src="https://github.com/user-attachments/assets/5ea6367c-28b4-4b7e-955c-cc7c7e63a7e6" />
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+![screen2](https://github.com/user-attachments/assets/575aab8a-013f-45f9-8075-d2b85fa1bdb5)
 
-## What technologies are used for this project?
+## ⚙️ Tech Stack
 
-This project is built with:
+| Component | Technology |
+|-----------|------------|
+| Frontend | HTML, JavaScript, Tailwind CSS (CDN) |
+| Database | Firebase Firestore |
+| Auth | Firebase Authentication |
+| AI | Lovable AI (Google Gemini) |
+| Backend | Lovable Cloud Edge Functions |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🚀 How to Use
 
-## How can I deploy this project?
+1. `index.html` को किसी भी modern browser में खोलें
+2. Footer से Admin Login करें और कंटेंट मैनेज करें
+3. AI Assistant से सेवाओं के बारे में पूछें
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 🔑 Features
 
-## Can I connect a custom domain to my Lovable project?
+- ✅ Responsive Design
+- ✅ AI-Powered Chat Assistant
+- ✅ Application Letter Generator
+- ✅ Admin Dashboard
+- ✅ Real-time Shop Status
+- ✅ Service Search
+- ✅ Falling Logo Animation
+- ✅ WhatsApp Integration
 
-Yes, you can!
+## ⚠️ Important Notes
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- पूरा प्रोजेक्ट single-file architecture पर आधारित है
+- Images लोकल `public/images/` फोल्डर से लोड होती हैं
+- AI features Lovable Cloud के through काम करते हैं
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+© 2025 Rohit Jan Seva Kendra
+
+Developed for Digital India Initiative 🇮🇳
