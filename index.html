@@ -1,26 +1,1770 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="रोहित जन सेवा केंद्र जहानाबाद - बैंकिंग, सरकारी योजनाएं, आधार, पैन, और साइबर कैफे की सभी डिजिटल सेवाएं।">
+    <meta name="keywords" content="रोहित जन सेवा केंद्र, CSC Jahanabad, Bank of Baroda BC, Digital India Services, Fatehpur CSC">
+    <meta name="author" content="रोहित कुमार">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="रोहित जन सेवा केंद्र | जहानाबाद">
+    <meta property="og:description" content="बैंकिंग, सरकारी योजनाएं और साइबर कैफे की सभी सेवाएं एक ही स्थान पर।">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    
+    <meta name="format-detection" content="telephone=no">
+    
+    <title>रोहित जन सेवा केंद्र | रोहित कुमार - जहानाबाद</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body { 
+            font-family: 'Hind', sans-serif; 
+            overflow-x: hidden; 
+            width: 100%;
+        }
+        .bg-bob { background-color: #005aab; }
+        .text-bob { color: #005aab; }
+        .bg-orange-bob { background-color: #f05a22; }
+        .text-orange-bob { color: #f05a22; }
+        
+        .hero-pattern { 
+            background-color: #f8fafc;
+            background-image: radial-gradient(#005aab 0.5px, transparent 0.5px); 
+            background-size: 20px 20px; 
+        }
+        
+        .whatsapp-btn { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        .ai-btn { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        /* Intro Popup Animation */
+        @keyframes popupFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        /* Improved Popup Styling */
+        #popup-overlay, #modal-overlay, #ai-modal-overlay, #login-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 9998;
+        }
+        
+        #service-popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            width: 90%;
+            max-width: 320px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        #edit-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        #login-modal {
+            display: none;
+            position: fixed;
+            z-index: 10002; /* Higher than others */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+        }
+
+        #ai-modal {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 450px;
+            height: 600px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Toast Notification */
+        #toast-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 20000;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #toast-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            #service-popup {
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+        }
+        
+        .service-list-item {
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .service-list-item:hover {
+            background-color: rgba(0, 90, 171, 0.08);
+            color: #005aab;
+            transform: translateX(5px);
+        }
+
+        /* News Ticker Animation */
+        .marquee-container { overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active { transform: translateX(0); }
+
+        /* Admin Panel Utilities */
+        .admin-view { display: none; }
+        .admin-view.active { display: block; }
+        .public-view.hidden { display: none; }
+
+        /* Chat Styles */
+        .chat-bubble {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .chat-user {
+            background-color: #005aab;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .chat-ai {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* ✅ FIXED: Falling Animation CSS - Larger Images */
+        @keyframes fallDown {
+          0% {
+            transform: translate(-50%, -350px) scale(0.8); /* Start higher up */
+            opacity: 0;
+          }
+          15% {
+            opacity: 1;
+            transform: translate(-50%, -40px) scale(1); /* Smooth entry */
+          }
+          85% {
+            opacity: 1;
+            transform: translate(-50%, 120px) scale(1); /* Slow float down */
+          }
+          100% {
+            transform: translate(-50%, 600px) scale(0.8); /* Exit */
+            opacity: 0;
+          }
+        }
+        
+        .falling-item {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          /* transform is fully controlled by animation now */
+          width: 85%; /* Container width ka 85% */
+          max-width: 420px; /* Maximum limit */
+          height: auto;
+          max-height: 350px; /* Height limit increased */
+          object-fit: contain;
+          animation: fallDown 4s ease-in-out forwards;
+          filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3)); /* Stronger shadow */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 relative">
+
+    <!-- ===== INTRO POPUP ===== -->
+    <div id="intro-popup" style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    ">
+      <div style="
+        max-width: 600px;
+        background: #111;
+        border-radius: 16px;
+        padding: 30px 25px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        animation: popupFadeIn 0.4s ease;
+      ">
+        <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 15px;">
+          📢 महत्वपूर्ण सूचना
+        </h2>
+
+        <p style="font-size: 18px; line-height: 1.6;">
+          अपने और अपने बिज़नेस के लिए वेबसाइट
+          <br>
+          व मोबाइल ऐप बनवाएँ,
+          <br>
+          वो भी किफ़ायती दामों में।
+          <br><br>
+          अधिक जानकारी के लिए संपर्क करें।
+        </p>
+
+        <p style="margin-top: 20px; font-size: 13px; opacity: 0.8;">
+          (कहीं भी टैप / क्लिक करें)
+        </p>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-overlay" onclick="closeLoginModal()"></div>
+    <div id="login-modal" class="animate-fade-in">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-slate-800">Admin Access</h3>
+            <button onclick="closeLoginModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+        </div>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Email</label>
+                <input type="email" id="admin-email" value="romiorohit86@gmail.com" class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="admin@example.com" required>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Password</label>
+                <input type="password" id="admin-password" class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="w-full bg-bob text-white py-3 rounded-xl font-bold hover:bg-blue-700 shadow-lg mt-2">
+                Secure Login
+            </button>
+        </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- AI ASSISTANT MODAL (Moved to Top for Safety) -->
+    <!-- ============================================ -->
+    <div id="ai-modal-overlay" onclick="closeAiModal()"></div>
+    <div id="ai-modal" class="bg-white flex flex-col animate-fade-in">
+        <!-- Header -->
+        <div class="bg-indigo-600 text-white p-4 flex justify-between items-center shrink-0">
+            <div class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-300"></i>
+                <div>
+                    <h3 class="font-bold text-lg leading-none">AI सहायक ✨</h3>
+                    <p class="text-[10px] text-indigo-200">Powered by Gemini</p>
+                </div>
+            </div>
+            <button onclick="closeAiModal()" class="text-white/80 hover:text-white hover:bg-white/10 p-1 rounded-full transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-slate-200 shrink-0">
+            <button onclick="switchAiTab('chat')" id="tab-chat" class="flex-1 py-3 text-sm font-bold text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50 transition-colors">पूछताछ (Chat)</button>
+            <button onclick="switchAiTab('letter')" id="tab-letter" class="flex-1 py-3 text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors">आवेदन लिखें (Write)</button>
+        </div>
+
+        <!-- Content: Chat -->
+        <div id="content-chat" class="flex-1 flex flex-col overflow-hidden">
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
+                <!-- Welcome Message -->
+                <div class="flex flex-col gap-1 chat-bubble chat-ai">
+                    <p>नमस्ते! 🙏 मैं रोहित जन सेवा केंद्र का AI असिस्टेंट हूँ।</p>
+                    <p>आप मुझसे सेवाओं, फीस, या दस्तावेजों के बारे में कुछ भी पूछ सकते हैं।</p>
+                </div>
+            </div>
+            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="chat-input" class="flex-1 border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" placeholder="कुछ भी पूछें (जैसे: आधार अपडेट फीस?)..." onkeypress="handleChatEnter(event)">
+                <button onclick="sendChatMessage()" class="bg-indigo-600 text-white p-2.5 rounded-full hover:bg-indigo-700 transition-colors shadow-sm">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content: Letter Writer -->
+        <div id="content-letter" class="flex-1 flex-col overflow-hidden hidden p-4 overflow-y-auto">
+            <div class="space-y-4">
+                <div class="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-800 border border-indigo-100">
+                    <p class="font-bold flex items-center gap-1"><i data-lucide="pen-tool" class="w-3 h-3"></i> आवेदन लेखक</p>
+                    <p class="text-xs mt-1">बैंक, पुलिस स्टेशन या तहसील के लिए फॉर्मल एप्लीकेशन लिखवाएं।</p>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">विषय (Subject)</label>
+                    <input type="text" id="letter-subject" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none" placeholder="जैसे: बैंक खाता बंद हो गया है">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">आपका नाम</label>
+                    <input type="text" id="letter-name" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none" placeholder="आपका शुभ नाम">
+                </div>
+
+                <button onclick="generateLetter()" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-bold text-sm hover:bg-indigo-700 shadow-md transition-colors flex justify-center items-center gap-2">
+                   <i data-lucide="sparkles" class="w-4 h-4"></i> आवेदन लिखें
+                </button>
+
+                <!-- Output Area -->
+                <div id="letter-output-container" class="hidden mt-4">
+                      <label class="block text-xs font-bold text-slate-500 mb-1">आपका आवेदन पत्र:</label>
+                    <div class="relative">
+                        <textarea id="letter-output" readonly class="w-full h-48 border border-slate-300 rounded-lg p-3 text-sm bg-slate-50 focus:outline-none resize-none font-sans" style="font-family: 'Hind', sans-serif;"></textarea>
+                        <button onclick="copyLetter()" class="absolute top-2 right-2 bg-white p-1.5 rounded-md shadow-sm border border-slate-200 text-slate-500 hover:text-indigo-600" title="Copy">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PUBLIC WEBSITE VIEW -->
+    <!-- ============================================ -->
+    <div id="public-view" class="public-view">
+        
+        <!-- News Ticker -->
+        <div class="bg-orange-bob text-white text-sm py-2 overflow-hidden relative z-50">
+            <div class="marquee-container max-w-7xl mx-auto flex items-center">
+                <span class="bg-orange-800 px-3 py-1 font-bold text-xs absolute left-0 z-10 hidden md:block">UPDATE</span>
+                <div id="marquee-text" class="marquee-content font-medium px-4">
+                    🔥 नई भर्ती: UP Police Constable Admit Card जारी | ⚡ PM किसान 17वीं क़िस्त उपलब्ध | 📝 लाडली बहना योजना फॉर्म भरे जा रहे हैं | 🆔 आधार कार्ड अपडेट केवल ₹50 में | 🎓 स्कॉलरशिप फॉर्म की अंतिम तिथि 30 मार्च
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup Overlay & Window -->
+        <div id="popup-overlay" onclick="closePopup()"></div>
+        <div id="service-popup" class="border-t-4 border-bob p-5 animate-fade-in">
+            <div class="flex justify-between items-start mb-3">
+                <div id="popup-icon" class="bg-bob/10 p-2.5 rounded-full text-bob"></div>
+                <button onclick="closePopup()" class="bg-slate-100 hover:bg-red-100 text-slate-500 hover:text-red-500 rounded-full p-1.5 transition-colors">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <h4 id="popup-title" class="font-bold text-xl text-slate-800 mb-3 border-b pb-2"></h4>
+            <div class="space-y-3 text-sm">
+                <div class="bg-slate-50 p-3 rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">आवश्यक दस्तावेज</p>
+                    <p id="popup-docs" class="text-slate-700 font-medium leading-relaxed"></p>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-blue-50 p-2 rounded-lg text-center">
+                        <p class="text-[10px] font-bold text-blue-400 uppercase mb-1">समय</p>
+                        <p id="popup-time" class="text-slate-700 font-bold"></p>
+                    </div>
+                    <div class="bg-green-50 p-2 rounded-lg text-center">
+                        <p class="text-[10px] font-bold text-green-500 uppercase mb-1">शुल्क (लगभग)</p>
+                        <p id="popup-fee" class="text-green-700 font-black"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Button -->
+        <button onclick="openAiModal()" class="fixed bottom-24 right-6 z-[100] ai-btn bg-white border-2 border-indigo-500 text-indigo-600 p-3 rounded-full shadow-2xl flex items-center justify-center hover:bg-indigo-50 transition-colors group" aria-label="AI Help">
+            <span class="absolute right-full mr-3 bg-indigo-600 text-white text-xs font-bold py-1 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">AI से पूछें ✨</span>
+            <i data-lucide="sparkles" class="w-7 h-7"></i>
+        </button>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919125471187" target="_blank" class="fixed bottom-6 right-6 z-[100] whatsapp-btn bg-green-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-green-600 transition-colors" aria-label="WhatsApp Us">
+            <i data-lucide="message-circle" class="w-8 h-8"></i>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="sticky top-0 z-[60] bg-white/95 backdrop-blur-md border-b border-slate-200 w-full shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-bob p-1.5 rounded-lg shrink-0 shadow-md">
+                            <i data-lucide="landmark" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="leading-tight">
+                            <h1 class="text-lg md:text-xl font-bold text-bob">रोहित जन सेवा केंद्र</h1>
+                            <p class="text-[10px] md:text-xs text-slate-500 font-medium">Govt. Authorized Center</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex gap-8 font-semibold text-sm items-center">
+                        <a href="#home" class="hover:text-bob transition-colors">होम</a>
+                        <a href="#banking" class="hover:text-bob transition-colors">बैंकिंग</a>
+                        <a href="#services" class="hover:text-bob transition-colors">सेवाएं</a>
+                        <a href="#contact" class="hover:text-bob transition-colors">संपर्क</a>
+                        <!-- Shop Status Badge -->
+                        <div id="shop-status" class="px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-gray-400"></span> लोडिंग...
+                        </div>
+                    </div>
+
+                    <button onclick="toggleMenu()" class="md:hidden p-2 text-slate-600 z-[70]" aria-label="Open menu">
+                        <i data-lucide="menu" id="hamburger-icon" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed inset-y-0 right-0 w-[80%] bg-white z-[65] flex flex-col p-6 shadow-2xl md:hidden">
+                <div class="flex justify-between items-center mb-8 border-b pb-4">
+                    <span class="text-xl font-bold text-bob">मेन्यू</span>
+                    <button onclick="toggleMenu()" class="p-2 bg-slate-100 rounded-full"><i data-lucide="x" class="w-6 h-6 text-slate-600"></i></button>
+                </div>
+                <div class="flex flex-col gap-6 text-xl font-bold text-slate-800">
+                    <a href="#home" onclick="toggleMenu()" class="flex items-center gap-3"><i data-lucide="home" class="w-5 h-5 text-bob"></i> होम</a>
+                    <a href="#banking" onclick="toggleMenu()" class="flex items-center gap-3"><i data-lucide="landmark" class="w-5 h-5 text-bob"></i> बैंकिंग</a>
+                    <a href="#services" onclick="toggleMenu()" class="flex items-center gap-3"><i data-lucide="grid" class="w-5 h-5 text-bob"></i> सेवाएं</a>
+                    <a href="#contact" onclick="toggleMenu()" class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-bob"></i> संपर्क</a>
+                </div>
+                
+                <div class="mt-auto bg-slate-50 p-4 rounded-xl">
+                    <div id="mobile-shop-status" class="mb-4 px-3 py-1 rounded-full text-xs font-bold border inline-flex items-center gap-1.5 bg-white">
+                        <span class="w-2 h-2 rounded-full bg-gray-400"></span> चेक किया जा रहा है...
+                    </div>
+                    <p class="text-sm text-slate-400 mb-1">आपातकालीन संपर्क</p>
+                    <a href="tel:9125471187" class="text-2xl font-bold text-bob block">9125471187</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative pt-12 pb-16 md:pt-20 md:pb-28 hero-pattern w-full overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 relative z-20 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-bob text-xs md:text-sm font-bold mb-6 shadow-sm">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+                    CSC ID: 362144720010 & Bank of Baroda BC
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 leading-tight">
+                    डिजिटल भारत की <br class="md:hidden"> <span class="text-bob">नई पहचान</span>
+                </h1>
+                <p class="text-base md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto font-medium px-4 leading-relaxed">
+                    बैंकिंग, आधार, पैन कार्ड, आय-जाति प्रमाण पत्र और सरकारी योजनाओं के आवेदन के लिए जहानाबाद का सबसे विश्वसनीय केंद्र।
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+                    <a href="tel:9125471187" class="w-full sm:w-auto bg-bob hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2 transition-transform hover:-translate-y-1">
+                        <i data-lucide="phone-call" class="w-5 h-5"></i> अभी कॉल करें
+                    </a>
+                    <button onclick="openAiModal()" class="w-full sm:w-auto bg-white text-indigo-600 border border-indigo-200 px-8 py-4 rounded-xl font-bold text-lg hover:border-indigo-500 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i> AI से मदद लें ✨
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banking Excellence Section -->
+        <section id="banking" class="py-16 md:py-24 bg-bob text-white w-full">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-white/20">BANKING POINT</div>
+                        <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">बैंक ऑफ बड़ौदा <br><span class="text-orange-400">ग्राहक सेवा केंद्र</span></h2>
+                        <p class="text-blue-100 mb-8 text-lg">अब बैंक जाने की जरूरत नहीं। हमारे केंद्र पर बैंकिंग की सभी सुविधाएं सुरक्षित और तेज गति से उपलब्ध हैं।</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/20 transition-colors">
+                                <i data-lucide="user-plus" class="w-8 h-8 text-orange-400 mb-3"></i>
+                                <h4 class="font-bold text-lg mb-1">नया खाता खोलें</h4>
+                                <p class="text-xs text-blue-100 opacity-80">जीरो बैलेंस सेविंग अकाउंट</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/20 transition-colors">
+                                <i data-lucide="fingerprint" class="w-8 h-8 text-orange-400 mb-3"></i>
+                                <h4 class="font-bold text-lg mb-1">आधार निकासी (AEPS)</h4>
+                                <p class="text-xs text-blue-100 opacity-80">किसी भी बैंक से पैसा निकालें</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/20 transition-colors">
+                                <i data-lucide="banknote" class="w-8 h-8 text-orange-400 mb-3"></i>
+                                <h4 class="font-bold text-lg mb-1">मनी ट्रांसफर</h4>
+                                <p class="text-xs text-blue-100 opacity-80">पूरे भारत में पैसे भेजें</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/20 transition-colors">
+                                <i data-lucide="shield-check" class="w-8 h-8 text-orange-400 mb-3"></i>
+                                <h4 class="font-bold text-lg mb-1">सोशल सिक्योरिटी</h4>
+                                <p class="text-xs text-blue-100 opacity-80">PMJJBY / PMSBY बीमा</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ===== BANK LOGO FALLING CONTAINER ===== -->
+                    <!-- Added overflow-hidden explicitly and relative positioning -->
+                    <div class="relative hidden lg:block h-[500px] w-full overflow-hidden rounded-3xl bg-gradient-to-b from-slate-100/50 to-white/10 border border-white/20 backdrop-blur-md shadow-inner">
+                        <!-- Falling images wrapper -->
+                        <div id="falling-container" class="absolute inset-0 w-full h-full">
+                            <!-- images injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section with SEARCH -->
+        <section id="services" class="py-16 md:py-24 bg-white w-full">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">डिजिटल सेवाएं</h2>
+                    <div class="w-20 h-1.5 bg-bob mx-auto rounded-full mb-8"></div>
+                    
+                    <!-- Search Bar -->
+                    <div class="max-w-xl mx-auto relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="text-slate-400 group-focus-within:text-bob transition-colors"></i>
+                        </div>
+                        <input type="text" id="service-search" placeholder="सेवा खोजें (जैसे: PAN, आधार, पैसा, फोटो...)" 
+                            class="w-full pl-12 pr-4 py-4 rounded-full border-2 border-slate-200 focus:border-bob focus:outline-none focus:ring-4 focus:ring-blue-50 text-lg shadow-sm transition-all"
+                            onkeyup="filterServices()">
+                    </div>
+                </div>
+
+                <!-- Dynamic Grid Container -->
+                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Services will be loaded here from Firebase -->
+                    <div class="col-span-3 text-center py-10 text-slate-400">
+                        <i data-lucide="loader-2" class="w-10 h-10 animate-spin mx-auto mb-2"></i>
+                        <p>सेवाएं लोड हो रही हैं...</p>
+                    </div>
+                </div>
+                
+                <div id="no-results" class="hidden text-center py-10">
+                    <i data-lucide="search-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+                    <p class="text-xl text-slate-500 font-bold">कोई सेवा नहीं मिली</p>
+                    <p class="text-slate-400">कृपया कुछ और सर्च करें या हमें कॉल करें।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-12 bg-slate-900 text-white text-center">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="p-4 rounded-xl hover:bg-white/5 transition-colors">
+                    <h4 class="text-4xl font-black text-orange-400 mb-1">10+</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-400">वर्षों का अनुभव</p>
+                </div>
+                <div class="p-4 rounded-xl hover:bg-white/5 transition-colors">
+                    <h4 class="text-4xl font-black text-orange-400 mb-1">5k+</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-400">ग्राहक</p>
+                </div>
+                <div class="p-4 rounded-xl hover:bg-white/5 transition-colors">
+                    <h4 class="text-4xl font-black text-orange-400 mb-1">100%</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-400">सफलता दर</p>
+                </div>
+                <div class="p-4 rounded-xl hover:bg-white/5 transition-colors">
+                    <h4 class="text-4xl font-black text-orange-400 mb-1">Fast</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-400">सर्विस</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-slate-50 w-full">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+                    <div class="grid md:grid-cols-2">
+                        <div class="p-8 md:p-12 bg-bob text-white flex flex-col justify-center">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6">संपर्क करें</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-lg"><i data-lucide="map-pin"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-lg">पता</h5>
+                                        <p class="text-blue-100">
+                                            बस स्टैंड, निजामी मोबाइल के सामने,<br>
+                                            मेन रोड, जहानाबाद, फतेहपुर (212661)
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-lg"><i data-lucide="clock"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-lg">समय</h5>
+                                        <p class="text-blue-100">प्रतिदिन: 08:30 AM - 08:30 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-lg"><i data-lucide="phone"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-lg">मोबाइल</h5>
+                                        <p class="text-2xl font-bold mt-1">9125471187</p>
+                                        <p class="text-sm text-blue-200">रोहित कुमार (संचालक)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10 pt-8 border-t border-white/20">
+                                <a href="https://wa.me/919125471187" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors shadow-lg">
+                                    <i data-lucide="message-circle"></i> व्हाट्सएप पर बात करें
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Map -->
+                        <div class="h-64 md:h-auto bg-slate-200 relative">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=26.100694,80.350806&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                            <a href="https://maps.app.goo.gl/JaHL9eucBRX2HfWb8?g_st=aw" target="_blank" class="absolute bottom-4 right-4 bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-bold shadow-lg flex items-center gap-2 hover:bg-slate-50">
+                                <i data-lucide="navigation" class="w-4 h-4"></i> दिशा देखें
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <div class="flex justify-center gap-8 mb-6">
+                    <a href="https://www.facebook.com/share/1A94qMVBC2/" target="_blank" class="hover:text-white transition-colors"><i data-lucide="facebook"></i></a>
+                    <a href="https://www.instagram.com/romio_rohit_?igsh=N29pNWhiNTZtM2s4" target="_blank" class="hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
+                    <a href="https://maps.app.goo.gl/JaHL9eucBRX2HfWb8?g_st=aw" target="_blank" class="hover:text-white transition-colors"><i data-lucide="map-pin"></i></a>
+                </div>
+                <p class="font-medium">© 2025 रोहित जन सेवा केंद्र | जहानाबाद</p>
+                <div class="flex justify-center items-center gap-4 mt-4">
+                     <p class="text-xs text-slate-600">Designed for Digital India Initiative</p>
+                     <span class="text-slate-700">|</span>
+                     <button onclick="openLoginModal()" class="text-xs text-slate-600 hover:text-bob font-bold uppercase">Admin Login</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ADMIN PANEL VIEW (Hidden by default) -->
+    <!-- ============================================ -->
+    <div id="admin-view" class="admin-view min-h-screen bg-slate-100">
+        <!-- Admin Nav -->
+        <nav class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-bob p-1.5 rounded-lg shrink-0">
+                            <i data-lucide="layout-dashboard" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold">Admin Panel</h1>
+                            <p class="text-[10px] text-slate-400 uppercase tracking-wider">Control Center</p>
+                        </div>
+                    </div>
+                    <button onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+                        <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <!-- Dashboard Controls -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                
+                <!-- Shop Status Control -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-4 text-slate-800">
+                        <div class="p-2 bg-green-100 rounded-lg text-green-600"><i data-lucide="store" class="w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg">Shop Status Override</h3>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="setAdminStatus('auto')" class="flex-1 py-3 rounded-xl border border-slate-200 font-bold hover:bg-slate-50 focus:ring-2 focus:ring-bob">Auto (Time)</button>
+                        <button onclick="setAdminStatus('open')" class="flex-1 py-3 rounded-xl bg-green-100 text-green-700 border border-green-200 font-bold hover:bg-green-200">Force Open</button>
+                        <button onclick="setAdminStatus('closed')" class="flex-1 py-3 rounded-xl bg-red-100 text-red-700 border border-red-200 font-bold hover:bg-red-200">Force Close</button>
+                    </div>
+                    <p id="admin-status-text" class="mt-3 text-sm text-slate-500 text-center">Current Mode: Auto</p>
+                </div>
+
+                <!-- Ticker Update -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-4 text-slate-800">
+                        <div class="p-2 bg-orange-100 rounded-lg text-orange-600"><i data-lucide="megaphone" class="w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg">Update News Ticker</h3>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="admin-ticker-input" class="flex-1 border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:border-bob" placeholder="Enter new announcement...">
+                        <button onclick="updateTicker()" class="bg-bob text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700">Update</button>
+                    </div>
+                    <p class="mt-2 text-xs text-slate-400">Updates instantly on public site.</p>
+                </div>
+            </div>
+
+            <!-- Service Management -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <i data-lucide="list" class="w-5 h-5"></i> Manage Services
+                    </h3>
+                    <button onclick="openAddModal()" class="bg-bob text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-blue-700 transition-colors">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Add New Service
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-600">
+                        <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                            <tr>
+                                <th class="px-6 py-3">Service Name</th>
+                                <th class="px-6 py-3">Category</th>
+                                <th class="px-6 py-3">Fee</th>
+                                <th class="px-6 py-3 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-service-table">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit/Add Modal -->
+    <div id="modal-overlay" onclick="closeEditModal()"></div>
+    <div id="edit-modal" class="p-6 animate-fade-in">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+            <h3 id="modal-title" class="text-xl font-bold text-slate-800">Edit Service</h3>
+            <button onclick="closeEditModal()" class="p-2 bg-slate-100 rounded-full hover:bg-red-100 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <form id="service-form" onsubmit="handleFormSubmit(event)">
+            <input type="hidden" id="edit-id">
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Category</label>
+                    <select id="edit-category" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:outline-none focus:border-bob">
+                        <option value="identity">दस्तावेज & लाइसेंस</option>
+                        <option value="banking">बैंकिंग सेवा</option>
+                        <option value="land">भूलेख एवं राजस्व</option>
+                        <option value="vehicle">वाहन सेवाएं</option>
+                        <option value="education">शिक्षा एवं भर्ती</option>
+                        <option value="schemes">सरकारी योजनाएं</option>
+                        <option value="health">स्वास्थ्य एवं कल्याण</option>
+                        <option value="ticket">टिकट बुकिंग</option>
+                        <option value="other">बिल एवं प्रिंटिंग</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Service Title</label>
+                    <input type="text" id="edit-title" required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="Ex: Aadhar Update">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Fee</label>
+                        <input type="text" id="edit-fee" required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="Ex: ₹50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Time</label>
+                        <input type="text" id="edit-time" required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="Ex: 5 mins">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Required Documents</label>
+                    <textarea id="edit-docs" rows="2" required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="List documents..."></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Icon Name (Lucide)</label>
+                    <input type="text" id="edit-icon" required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:border-bob" placeholder="Ex: home, user, file">
+                    <p class="text-[10px] text-slate-400 mt-1">Visit lucide.dev/icons for names</p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t flex justify-end gap-3">
+                <button type="button" onclick="closeEditModal()" class="px-5 py-3 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200">Cancel</button>
+                <button type="submit" class="px-5 py-3 rounded-xl font-bold text-white bg-bob hover:bg-blue-700 shadow-lg">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        /* ================= FIREBASE IMPORTS ================= */
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            signInAnonymously, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            getDocs, 
+            setDoc, 
+            deleteDoc,
+            onSnapshot
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        /* ================= CONFIG ================= */
+        // NOTE: This Firebase key must remain public for the client SDK to work.
+        // Security is handled by Firestore Rules, NOT by hiding this key.
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1IWZXf6uGj6eTU6QVrGmRKf65YK02XG8",
+            authDomain: "rohitcafe-a335b.firebaseapp.com",
+            projectId: "rohitcafe-a335b",
+            storageBucket: "rohitcafe-a335b.firebasestorage.app",
+            messagingSenderId: "55303679856",
+            appId: "1:55303679856:web:870886641d23af677369b5"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        /* 🔑 MUST MATCH FIRESTORE RULES */
+        const ADMIN_EMAIL = "romiorohit86@gmail.com";
+        const appId = "rohitcafe-default"; 
+
+        // ===== SERVICE STATE =====
+        const localServices = {
+            // Identity
+            aadhaar_up: { id: "aadhaar_up", category: "identity", title: "आधार अपडेट", icon: "fingerprint", docs: "आधार कार्ड / मोबाइल (OTP) / बायोमेट्रिक", time: "3-7 दिन", fee: "₹50 - ₹100" },
+            pan_link: { id: "pan_link", category: "identity", title: "पैन कार्ड (नया/सुधार)", icon: "credit-card", docs: "आधार कार्ड / फोटो / हस्ताक्षर", time: "7-10 दिन", fee: "₹150 - ₹200" },
+            dl: { id: "dl", category: "identity", title: "ड्राइविंग लाइसेंस (DL)", icon: "car", docs: "आधार / फोटो / मार्कशीट (अगर है)", time: "15-30 दिन", fee: "₹500+" },
+            passport: { id: "passport", category: "identity", title: "पासपोर्ट आवेदन", icon: "book-user", docs: "आधार / पैन / 10th मार्कशीट", time: "15-20 दिन", fee: "₹1500+" },
+            voter: { id: "voter", category: "identity", title: "वोटर & राशन कार्ड", icon: "vote", docs: "आधार / फोटो / परिवार विवरण", time: "10-15 दिन", fee: "₹50 - ₹100" },
+            // Banking
+            balance: { id: "balance", category: "banking", title: "बैलेंस / स्टेटमेंट", icon: "banknote", docs: "आधार नंबर / बैंक का नाम", time: "तुरंत", fee: "₹10 - ₹20" },
+            aeps_dep: { id: "aeps_dep", category: "banking", title: "नकद जमा (AEPS)", icon: "arrow-down-circle", docs: "बैंक नाम / आधार / कैश", time: "तुरंत", fee: "न्यूनतम" },
+            ac_seed: { id: "ac_seed", category: "banking", title: "DBT लिंकिंग", icon: "link-2", docs: "आधार कार्ड / बैंक पासबुक", time: "24-48 घंटे", fee: "₹50" },
+            upi_act: { id: "upi_act", category: "banking", title: "UPI / बैंकिंग चालू", icon: "smartphone", docs: "ATM कार्ड / मोबाइल / आधार", time: "10 मिनट", fee: "₹50" },
+            atmpin: { id: "atmpin", category: "banking", title: "ATM पिन", icon: "key", docs: "ATM कार्ड / पासबुक / मोबाइल", time: "तुरंत", fee: "₹30" },
+            // Land
+            bhulekh: { id: "bhulekh", category: "land", title: "खतौनी / भूलेख", icon: "map", docs: "गाटा संख्या / नाम", time: "तुरंत", fee: "₹20 - ₹40" },
+            income: { id: "income", category: "land", title: "आय / जाति / निवास", icon: "file-badge", docs: "आधार / फोटो / घोषणा पत्र", time: "7-10 दिन", fee: "₹100" },
+            police_ver: { id: "police_ver", category: "land", title: "पुलिस वेरिफिकेशन", icon: "shield-alert", docs: "आधार / फोटो", time: "5-10 दिन", fee: "₹100" },
+            birth_death: { id: "birth_death", category: "land", title: "जन्म / मृत्यु प्रमाण", icon: "file-text", docs: "अस्पताल की रसीद / आधार", time: "15-20 दिन", fee: "₹100+" },
+            marriage: { id: "marriage", category: "land", title: "विवाह पंजीकरण", icon: "heart-handshake", docs: "आधार (दोनों) / फोटो / कार्ड", time: "20-30 दिन", fee: "Govt + ₹200" },
+            // Vehicle
+            challan: { id: "challan", category: "vehicle", title: "चालान स्टेटस / भुगतान", icon: "file-warning", docs: "गाड़ी नंबर / चेचिस नंबर", time: "तुरंत", fee: "चालान राशि + ₹30" },
+            rc_print: { id: "rc_print", category: "vehicle", title: "RC प्रिंट (Smart Card)", icon: "printer", docs: "गाड़ी नंबर / आधार", time: "तुरंत", fee: "₹50" },
+            rc_mobile: { id: "rc_mobile", category: "vehicle", title: "RC मोबाइल अपडेट", icon: "smartphone", docs: "RC / आधार / नया मोबाइल", time: "24 घंटे", fee: "₹50" },
+            vehicle_ins: { id: "vehicle_ins", category: "vehicle", title: "वाहन बीमा (Insurance)", icon: "shield-check", docs: "RC / पुरानी पॉलिसी (यदि है)", time: "तुरंत", fee: "पॉलिसी अनुसार" },
+            fastag: { id: "fastag", category: "vehicle", title: "FASTag रिचार्ज/इशू", icon: "zap", docs: "RC की कॉपी / मोबाइल", time: "तुरंत", fee: "₹100 + रिचार्ज" },
+            // Education
+            exam_reg: { id: "exam_reg", category: "education", title: "सरकारी फॉर्म", icon: "edit-3", docs: "मार्कशीट / फोटो / सिग्नेचर", time: "30 मिनट", fee: "₹50 - ₹100" },
+            scholarship: { id: "scholarship", category: "education", title: "स्कॉलरशिप", icon: "graduation-cap", docs: "आधार / मार्कशीट / आय / फीस रसीद", time: "30 मिनट", fee: "₹80 - ₹100" },
+            ans_key: { id: "ans_key", category: "education", title: "एडमिट कार्ड & रिजल्ट", icon: "clipboard-check", docs: "रोल नंबर / जन्म तिथि", time: "तुरंत", fee: "₹20" },
+            admission: { id: "admission", category: "education", title: "यूनिवर्सिटी एडमिशन", icon: "school", docs: "मार्कशीट / फोटो / आधार", time: "तुरंत", fee: "₹50 - ₹100" },
+            rojgar: { id: "rojgar", category: "education", title: "रोजगार पंजीकरण", icon: "briefcase", docs: "आधार / शैक्षिक प्रमाण पत्र", time: "तुरंत", fee: "₹50" },
+            // Schemes
+            pmkisan: { id: "pmkisan", category: "schemes", title: "PM किसान KYC", icon: "sprout", docs: "आधार / मोबाइल / खतौनी", time: "तुरंत", fee: "₹50" },
+            pmawas: { id: "pmawas", category: "schemes", title: "PM आवास आवेदन", icon: "home", docs: "आधार / बैंक / जमीन के कागज", time: "Govt Process", fee: "₹100" },
+            labourcard: { id: "labourcard", category: "schemes", title: "लेबर कार्ड पंजी.", icon: "hard-hat", docs: "आधार / बैंक पासबुक / फोटो", time: "15-20 दिन", fee: "₹100" },
+            nrega: { id: "nrega", category: "schemes", title: "नरेगा जॉब कार्ड", icon: "shovel", docs: "आधार / बैंक / फोटो", time: "15 दिन", fee: "₹50" },
+            toilet: { id: "toilet", category: "schemes", title: "शौचालय योजना", icon: "archive", docs: "आधार / बैंक / फोटो", time: "सरकारी प्रक्रिया", fee: "₹50" },
+            // Health
+            healthcards: { id: "healthcards", category: "health", title: "आयुष्मान / ABHA", icon: "heart-pulse", docs: "आधार / मोबाइल (OTP हेतु)", time: "तुरंत", fee: "₹30 - ₹50" },
+            eshram: { id: "eshram", category: "health", title: "ई-श्रम कार्ड", icon: "shield-plus", docs: "आधार / मोबाइल (OTP) / बैंक", time: "तुरंत", fee: "₹50" },
+            pension: { id: "pension", category: "health", title: "वृद्धा / विधवा पेंशन", icon: "users", docs: "आधार / पासबुक / आय / फोटो", time: "15-20 दिन", fee: "₹100" },
+            familyid: { id: "familyid", category: "health", title: "फैमिली ID (UP)", icon: "users", docs: "सभी का आधार / मोबाइल", time: "10-15 दिन", fee: "₹50" },
+            pf_withdraw: { id: "pf_withdraw", category: "health", title: "PF निकासी", icon: "indian-rupee", docs: "UAN / आधार / बैंक", time: "7-10 दिन", fee: "₹100" },
+            // Ticket
+            irctc: { id: "irctc", category: "ticket", title: "रेलवे टिकट (IRCTC)", icon: "train", docs: "आधार / यात्रा विवरण", time: "तुरंत", fee: "टिकट + ₹50" },
+            flight: { id: "flight", category: "ticket", title: "हवाई जहाज टिकट", icon: "plane", docs: "आधार / यात्रा विवरण", time: "तुरंत", fee: "टिकट + ₹100" },
+            bus: { id: "bus", category: "ticket", title: "बस टिकट बुकिंग", icon: "bus", docs: "यात्रा विवरण", time: "तुरंत", fee: "टिकट + ₹20" },
+            // Other
+            pvccard: { id: "pvccard", category: "other", title: "PVC स्मार्ट कार्ड", icon: "credit-card", docs: "PDF या कार्ड नंबर", time: "10 मिनट", fee: "₹50 - ₹100" },
+            photo: { id: "photo", category: "other", title: "अर्जेंट फोटो", icon: "camera", docs: "स्टूडियो में आएं", time: "5 मिनट", fee: "₹50 (32 फोटो)" },
+            photocopy: { id: "photocopy", category: "other", title: "फोटोकॉपी & टाइपिंग", icon: "files", docs: "हार्डकॉपी", time: "तुरंत", fee: "₹2/page" },
+            bill: { id: "bill", category: "other", title: "बिजली / पानी बिल", icon: "calculator", docs: "कंज्यूमर नंबर / रसीद", time: "तुरंत", fee: "₹10" },
+            insurance: { id: "insurance", category: "other", title: "CSC पोर्टल सहायता", icon: "help-circle", docs: "एप्लीकेशन डिटेल्स", time: "तुरंत", fee: "निशुल्क" }
+        };
+
+        let firestoreServices = {};
+        let finalServices = {};
+
+        const categoryMeta = {
+            identity: { title: "दस्तावेज & लाइसेंस", icon: "id-card", color: "orange" },
+            banking: { title: "बैंकिंग सेवा", icon: "landmark", color: "blue" },
+            land: { title: "भूलेख एवं राजस्व", icon: "file-check", color: "emerald" },
+            vehicle: { title: "वाहन सेवाएं", icon: "car", color: "red" },
+            education: { title: "शिक्षा एवं भर्ती", icon: "graduation-cap", color: "indigo" },
+            schemes: { title: "सरकारी योजनाएं", icon: "sprout", color: "green" },
+            health: { title: "स्वास्थ्य एवं कल्याण", icon: "heart-pulse", color: "amber" },
+            ticket: { title: "टिकट बुकिंग", icon: "ticket", color: "teal" },
+            other: { title: "बिल एवं प्रिंटिंग", icon: "printer", color: "purple" }
+        };
+
+        /* ================= AUTH FLOW ================= */
+
+        /* Public = anonymous */
+        async function initApp() {
+          try {
+            await signInAnonymously(auth);
+            loadFirestoreServices();
+            console.log("Anonymous session started");
+          } catch (e) {
+            console.error("Auth Error:", e);
+          }
+        }
+
+        /* Auth State Sync (VERY IMPORTANT) */
+        onAuthStateChanged(auth, user => {
+          if (user && user.email === ADMIN_EMAIL) {
+            document.getElementById("public-view")?.classList.add("hidden");
+            document.getElementById("admin-view")?.classList.add("active");
+          } else {
+            document.getElementById("admin-view")?.classList.remove("active");
+            document.getElementById("public-view")?.classList.remove("hidden");
+            
+            // If no user at all, init anonymous
+            if(!user) initApp();
+          }
+          // Always load services
+          loadFirestoreServices();
+        });
+
+        /* ================= FIRESTORE LOGIC ================= */
+
+        /* LOAD SERVICES */
+        async function loadFirestoreServices() {
+            firestoreServices = {};
+            const ref = collection(db, "artifacts", appId, "public", "data", "services");
+            const snap = await getDocs(ref);
+
+            snap.forEach(d => {
+                firestoreServices[d.id] = { id: d.id, ...d.data() };
+            });
+
+            mergeServices();
+        }
+
+        /* MERGE (Firestore > Local) */
+        function mergeServices() {
+            finalServices = { ...localServices };
+            
+            // 🔥 Firestore takes priority
+            Object.keys(firestoreServices).forEach(id => {
+                finalServices[id] = { id: id, ...firestoreServices[id] };
+            });
+
+            renderPublicServices(finalServices);
+            renderAdminTable(finalServices);
+        }
+
+        // --- Rendering Logic using FINAL SERVICES ---
+
+        function renderPublicServices(services) {
+            const grid = document.getElementById('services-grid');
+            if(!grid) return;
+            grid.innerHTML = '';
+
+            // Group by category using mergedServices values
+            const grouped = {};
+            const allServices = Object.values(services);
+            
+            allServices.forEach(service => {
+                if (!grouped[service.category]) grouped[service.category] = [];
+                grouped[service.category].push(service);
+            });
+
+            // Iterate through defined categories order
+            Object.keys(categoryMeta).forEach(catKey => {
+                if (grouped[catKey]) {
+                    const meta = categoryMeta[catKey];
+                    const items = grouped[catKey];
+                    
+                    // Create Card HTML
+                    const card = document.createElement('div');
+                    card.className = `service-card group p-6 bg-${getBgColor(meta.color)} rounded-2xl border border-${meta.color}-100 hover:shadow-xl hover:border-${meta.color}-300 transition-all`;
+                    
+                    let itemsHtml = '';
+                    items.forEach(item => {
+                        // We use the ID to reference the mergedServices object in click handler
+                        itemsHtml += `
+                            <li class="service-list-item flex items-center gap-2 text-slate-600" onclick="handleServiceClick('${item.id}')" data-service-key='${item.id}'>
+                                <i data-lucide="chevron-right" class="w-4 h-4 text-bob"></i> ${item.title}
+                            </li>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="bg-${meta.color}-100 text-${meta.color}-600 p-3 rounded-xl"><i data-lucide="${meta.icon}"></i></div>
+                            <h3 class="text-xl font-bold text-slate-800">${meta.title}</h3>
+                        </div>
+                        <ul class="space-y-2">
+                            ${itemsHtml}
+                        </ul>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+
+            // Re-init icons
+            lucide.createIcons();
+        }
+
+        function getBgColor(color) {
+            // Helper to map color names to Tailwind bg classes safely
+            if(color === 'slate' || color === 'white') return 'slate-50';
+            return `${color}-50`;
+        }
+
+        function renderAdminTable(services) {
+            const tbody = document.getElementById('admin-service-table');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+
+            const allServices = Object.values(services);
+
+            allServices.forEach(service => {
+                const tr = document.createElement('tr');
+                tr.className = "bg-white border-b hover:bg-slate-50";
+                
+                tr.innerHTML = `
+                    <td class="px-6 py-4 font-medium text-slate-900 flex items-center gap-2">
+                        <i data-lucide="${service.icon}" class="w-4 h-4 text-slate-400"></i> ${service.title}
+                    </td>
+                    <td class="px-6 py-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded border border-blue-400">${categoryMeta[service.category]?.title || service.category}</span>
+                    </td>
+                    <td class="px-6 py-4 text-green-600 font-bold">${service.fee}</td>
+                    <td class="px-6 py-4 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <button onclick="window.editService('${service.id}')" class="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100" title="Edit">
+                                <i data-lucide="pencil" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="window.deleteService('${service.id}')" class="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100" title="Delete">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+        }
+
+        // --- Admin Actions ---
+        
+        window.openAddModal = () => {
+            document.getElementById('modal-title').innerText = "Add New Service";
+            document.getElementById('service-form').reset();
+            document.getElementById('edit-id').value = ""; // Empty ID means create new
+            document.getElementById('edit-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+        };
+
+        window.editService = (id) => {
+            const service = finalServices[id];
+            if (!service) return;
+
+            document.getElementById('modal-title').innerText = "Edit Service";
+            document.getElementById('edit-id').value = service.id;
+            document.getElementById('edit-title').value = service.title;
+            document.getElementById('edit-category').value = service.category;
+            document.getElementById('edit-fee').value = service.fee;
+            document.getElementById('edit-time').value = service.time;
+            document.getElementById('edit-docs').value = service.docs;
+            document.getElementById('edit-icon').value = service.icon;
+
+            document.getElementById('edit-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+        };
+
+        window.closeEditModal = () => {
+            document.getElementById('edit-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+        };
+
+        /* ================= ADMIN SAVE / DELETE ================= */
+
+        window.saveService = async function (serviceId, updatedData) {
+             const user = auth.currentUser;
+             if (!user || user.email !== ADMIN_EMAIL) {
+               showToast("Permission denied: Admin not logged in");
+               return;
+             }
+
+             const ref = doc(db, "artifacts", appId, "public", "data", "services", serviceId);
+             
+             // Ensure ID is part of the data
+             await setDoc(ref, { id: serviceId, ...updatedData }, { merge: true });
+             await loadFirestoreServices();
+             showToast("Service saved successfully");
+        };
+
+        /* DELETE SERVICE */
+        window.deleteService = async function (serviceId) {
+             const user = auth.currentUser;
+             if (!user || user.email !== ADMIN_EMAIL) {
+               showToast("Permission denied: Admin not logged in");
+               return;
+             }
+
+             if (!confirm("Delete this service? If a local version exists, it will be restored.")) return;
+
+             const ref = doc(db, "artifacts", appId, "public", "data", "services", serviceId);
+             await deleteDoc(ref);
+             
+             delete firestoreServices[serviceId];
+             mergeServices(); // Re-merge to show fallback if exists
+             
+             showToast("Service deleted from database.");
+        };
+
+        window.handleFormSubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const isNew = !id;
+            
+            // Generate ID if new
+            const docId = isNew ? 'svc_' + Date.now() : id;
+            
+            const data = {
+                title: document.getElementById('edit-title').value,
+                category: document.getElementById('edit-category').value,
+                fee: document.getElementById('edit-fee').value,
+                time: document.getElementById('edit-time').value,
+                docs: document.getElementById('edit-docs').value,
+                icon: document.getElementById('edit-icon').value
+            };
+
+            try {
+                await saveService(docId, data);
+                window.closeEditModal();
+            } catch (err) {
+                showToast('Error saving: ' + err.message);
+            }
+        };
+
+        /* ================= NEWS TICKER LOGIC ================= */
+        
+        // Load Ticker
+        onSnapshot(doc(db, "artifacts", appId, "public", "data", "settings", "global"), (snap) => {
+            if(snap.exists() && snap.data().newsTicker) {
+                const text = snap.data().newsTicker;
+                const marquee = document.getElementById('marquee-text');
+                const adminInput = document.getElementById('admin-ticker-input');
+                
+                if(marquee) marquee.innerText = text;
+                if(adminInput && document.getElementById("admin-view").classList.contains("active")) {
+                    adminInput.value = text;
+                }
+            }
+        });
+
+        window.saveNewsTicker = async function(text) {
+             const user = auth.currentUser;
+             if (!user || user.email !== ADMIN_EMAIL) {
+               showToast("Admin login required");
+               return;
+             }
+
+             const ref = doc(db, "artifacts", appId, "public", "data", "settings", "global");
+             await setDoc(ref, { newsTicker: text }, { merge: true });
+             showToast("Ticker saved permanently");
+        }
+
+        window.updateTicker = () => {
+            const newText = document.getElementById('admin-ticker-input').value;
+            if(newText) {
+                saveNewsTicker(newText);
+            }
+        }
+
+
+        // --- Standard UI Functions (Popup, Menu) ---
+        // Expose to window so HTML onclick works
+        window.handleServiceClick = (key) => {
+            const data = finalServices[key];
+            if(!data) return;
+            
+            if(window.innerWidth > 768) return; 
+            
+            document.getElementById('popup-title').innerText = data.title;
+            document.getElementById('popup-docs').innerText = data.docs;
+            document.getElementById('popup-time').innerText = data.time;
+            document.getElementById('popup-fee').innerText = data.fee;
+            document.getElementById('popup-icon').innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6"></i>`;
+            lucide.createIcons();
+            
+            // Show centered popup
+            document.getElementById('service-popup').style.display = 'block';
+            document.getElementById('popup-overlay').style.display = 'block';
+        }
+
+        // Desktop Hover Logic for Dynamic Items (Event Delegation)
+        const gridEl = document.getElementById('services-grid');
+        if(gridEl) {
+            gridEl.addEventListener('mouseover', (e) => {
+                if(window.innerWidth <= 768) return;
+                const item = e.target.closest('.service-list-item');
+                if(item) {
+                    const key = item.getAttribute('data-service-key');
+                    const data = finalServices[key];
+                    if(!data) return;
+
+                    const popup = document.getElementById('service-popup');
+                    
+                    document.getElementById('popup-title').innerText = data.title;
+                    document.getElementById('popup-docs').innerText = data.docs;
+                    document.getElementById('popup-time').innerText = data.time;
+                    document.getElementById('popup-fee').innerText = data.fee;
+                    document.getElementById('popup-icon').innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6"></i>`;
+                    lucide.createIcons();
+
+                    popup.style.display = 'block';
+                    
+                    // Position logic
+                    const rect = item.getBoundingClientRect();
+                    let left = rect.right + 10;
+                    let top = rect.top;
+                    
+                    if (left + 320 > window.innerWidth) left = rect.left - 330; // Flip if no space
+                    
+                    popup.style.left = left + 'px';
+                    popup.style.top = top + 'px';
+                    popup.style.position = 'fixed';
+                    popup.style.transform = 'none';
+                }
+            });
+            
+            gridEl.addEventListener('mouseout', (e) => {
+                if(window.innerWidth > 768 && e.target.closest('.service-list-item')) {
+                     document.getElementById('service-popup').style.display = 'none';
+                }
+            });
+        }
+        
+        // Close Popup
+        window.closePopup = () => {
+             document.getElementById('service-popup').style.display = 'none';
+             document.getElementById('popup-overlay').style.display = 'none';
+        }
+
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        window.toggleMenu = () => {
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Search Filter
+        const searchInput = document.getElementById('service-search');
+        window.filterServices = () => {
+            const filter = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.service-card');
+            let hasResults = false;
+
+            cards.forEach(card => {
+                let cardMatch = false;
+                const listItems = card.querySelectorAll('.service-list-item');
+                
+                listItems.forEach(item => {
+                    const key = item.getAttribute('data-service-key');
+                    const data = finalServices[key];
+                    // Search in title, docs, or category
+                    const text = (data.title + " " + data.docs + " " + data.category).toLowerCase();
+                    
+                    if (text.includes(filter)) {
+                        item.style.display = "flex";
+                        cardMatch = true;
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+
+                // Also check card title
+                if (card.querySelector('h3').innerText.toLowerCase().includes(filter)) {
+                    cardMatch = true;
+                    listItems.forEach(i => i.style.display = "flex");
+                }
+
+                if (cardMatch) {
+                    card.style.display = "block";
+                    hasResults = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+        }
+
+        // --- Admin Utils & Login ---
+        
+        window.openLoginModal = () => {
+            document.getElementById('login-modal').style.display = 'block';
+            document.getElementById('login-modal-overlay').style.display = 'block';
+        }
+
+        window.closeLoginModal = () => {
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('login-modal-overlay').style.display = 'none';
+        }
+
+        window.handleAdminLogin = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showToast("Admin login successful");
+                closeLoginModal();
+                // onAuthStateChanged will handle the view switch
+            } catch (error) {
+                showToast("Login Failed: " + error.message);
+            }
+        };
+        
+        // Expose Request Admin Access for debugging or manual calls, mapping to Modal
+        window.requestAdminAccess = window.openLoginModal;
+
+        /* Logout */
+        window.logoutAdmin = async () => {
+          await signOut(auth);
+          // Auto sign-in anon via onAuthStateChanged or explicit call
+          await signInAnonymously(auth);
+          // No reload needed, UI updates automatically
+          showToast("Logged out successfully.");
+        };
+
+        // New Toast System to replace Alerts
+        window.showToast = (msg) => {
+            const toast = document.getElementById('toast-notification');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        let adminStatusMode = 'auto';
+        window.setAdminStatus = (mode) => {
+            adminStatusMode = mode;
+            document.getElementById('admin-status-text').innerText = "Current Mode: " + mode.toUpperCase();
+            updateShopStatus();
+            showToast("Shop status set to: " + mode.toUpperCase());
+        }
+
+        // Shop Status Logic
+        function updateShopStatus() {
+            const now = new Date();
+            const hour = now.getHours();
+            const day = now.getDay(); 
+            
+            let isOpen = (hour >= 8 && hour < 20.5); 
+            if (day === 0) isOpen = false; 
+
+            if (adminStatusMode === 'open') isOpen = true;
+            if (adminStatusMode === 'closed') isOpen = false;
+            
+            const badges = [document.getElementById('shop-status'), document.getElementById('mobile-shop-status')];
+            
+            badges.forEach(badge => {
+                if(!badge) return;
+                if (isOpen) {
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 bg-green-100 text-green-700 border-green-200";
+                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> अभी खुला है`;
+                } else {
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 bg-red-100 text-red-700 border-red-200";
+                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-500"></span> अभी बंद है`;
+                }
+            });
+        }
+        updateShopStatus();
+        setInterval(updateShopStatus, 60000);
+
+
+        // ============================================
+        // AI LOGIC & FUNCTIONS (Using Backend API)
+        // ============================================
+        
+        const geminiApiKey = "AIzaSyDLu4w7Mf8TKaawT3oXdHMNdJOaMOXZkWg"; // Set at runtime by environment
+
+        window.openAiModal = () => {
+            const modal = document.getElementById('ai-modal');
+            const overlay = document.getElementById('ai-modal-overlay');
+            
+            if (!modal || !overlay) {
+                console.error("AI Modal elements not found in DOM");
+                if(window.showToast) window.showToast("AI सिस्टम लोड नहीं हो सका, पेज रिफ्रेश करें।");
+                return;
+            }
+
+            modal.style.display = 'flex';
+            overlay.style.display = 'block';
+        }
+
+        window.closeAiModal = () => {
+            const modal = document.getElementById('ai-modal');
+            const overlay = document.getElementById('ai-modal-overlay');
+            
+            if (modal) modal.style.display = 'none';
+            if (overlay) overlay.style.display = 'none';
+        }
+
+        window.switchAiTab = (tab) => {
+            const chatContent = document.getElementById('content-chat');
+            const letterContent = document.getElementById('content-letter');
+            const chatTab = document.getElementById('tab-chat');
+            const letterTab = document.getElementById('tab-letter');
+
+            if(tab === 'chat') {
+                chatContent.classList.remove('hidden');
+                letterContent.classList.add('hidden');
+                chatTab.className = "flex-1 py-3 text-sm font-bold text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50 transition-colors";
+                letterTab.className = "flex-1 py-3 text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors";
+            } else {
+                chatContent.classList.add('hidden');
+                letterContent.classList.remove('hidden');
+                // Make Letter visible (display flex)
+                letterContent.style.display = "flex";
+                
+                chatTab.className = "flex-1 py-3 text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors";
+                letterTab.className = "flex-1 py-3 text-sm font-bold text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50 transition-colors";
+            }
+        }
+
+        // CHAT LOGIC
+        window.handleChatEnter = (e) => {
+            if(e.key === 'Enter') window.sendChatMessage();
+        }
+
+        window.sendChatMessage = async () => {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if(!message) return;
+
+            // Add User Message
+            appendMessage(message, 'user');
+            input.value = '';
+
+            // Loading State
+            const loadingId = appendLoading();
+
+            try {
+                // Call Backend API instead of Direct Gemini
+                const responseText = await callBackendAi(message);
+                removeLoading(loadingId);
+                appendMessage(responseText, 'ai');
+            } catch (error) {
+                removeLoading(loadingId);
+                appendMessage("माफ़ कीजिये, अभी सर्वर व्यस्त है। कृपया थोड़ी देर बाद प्रयास करें।", 'ai');
+                console.error(error);
+            }
+        }
+
+        function appendMessage(text, sender) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `chat-bubble ${sender === 'user' ? 'chat-user' : 'chat-ai'}`;
+            // Simple markdown parsing for bold
+            div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendLoading() {
+            const container = document.getElementById('chat-messages');
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = "chat-bubble chat-ai flex gap-1 items-center py-4";
+            div.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        function removeLoading(id) {
+            const el = document.getElementById(id);
+            if(el) el.remove();
+        }
+
+        // ✅ NEW: Call Vercel Backend Function
+        async function callBackendAi(userQuery) {
+            // Context from servicesData (use MergedServices values)
+            const serviceList = Object.values(finalServices);
+            const contextData = JSON.stringify(serviceList.map(s => ({ title: s.title, fee: s.fee, docs: s.docs, time: s.time })));
+            
+            const systemPrompt = `You are a helpful AI assistant for 'Rohit Jan Seva Kendra' (a CSC center). 
+            Your name is 'Sahayak'. You speak primarily in Hindi (using Devanagari script).
+            
+            Here is the list of services we provide with their details:
+            ${contextData}
+
+            Rules:
+            1. Answer questions about fees, documents, and time based strictly on the provided data.
+            2. If a user asks about a service not in the list, say we might not offer it but they can call 9125471187 to confirm.
+            3. Keep answers concise, polite and helpful.
+            4. If asked about shop timing, say 8:30 AM to 8:30 PM.
+            5. Use formatting like bullet points for lists.`;
+
+            // Call our own backend API
+            try {
+                const res = await fetch('/api/ai-chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        message: userQuery,
+                        context: systemPrompt
+                    })
+                });
+
+                if (!res.ok) throw new Error("API Error: " + res.status);
+
+                const data = await res.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
+            } catch (error) {
+                 console.error("Backend Call Failed:", error);
+                 // Fallback for Preview environment where /api doesn't exist
+                 if (window.location.hostname.includes('usercontent') || window.location.protocol === 'blob:') {
+                     return "⚠️ **नोट:** मैं अभी Preview मोड में हूँ। असली AI जवाब के लिए कृपया इस ऐप को Vercel पर Deploy करें। (Backend '/api/ai-chat' अभी उपलब्ध नहीं है)।";
+                 }
+                 throw error;
+            }
+        }
+
+
+        // LETTER WRITER LOGIC
+        window.generateLetter = async () => {
+            const subject = document.getElementById('letter-subject').value;
+            const name = document.getElementById('letter-name').value;
+            
+            if(!subject || !name) {
+                showToast("कृपया विषय और नाम भरें।");
+                return;
+            }
+
+            const btn = document.querySelector('#content-letter button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> लिख रहा हूँ...`;
+            btn.disabled = true;
+            lucide.createIcons();
+
+            try {
+                const prompt = `Write a formal application letter in Hindi.
+                Sender Name: ${name}
+                Subject/Reason: ${subject}
+                
+                The letter should be formal, addressed to the appropriate authority (Bank Manager, Police Station In-charge, or District Magistrate based on the subject).
+                Include placeholders like [Date] or [Account Number] where necessary.
+                Do not include any explanations, just the letter body.`;
+
+                // Reuse the same backend function for letter writing
+                try {
+                    const res = await fetch('/api/ai-chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            message: prompt,
+                            context: "You are a professional letter writer."
+                        })
+                    });
+
+                    if (!res.ok) throw new Error("API Error");
+
+                    const data = await res.json();
+                    const letter = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    document.getElementById('letter-output').value = letter;
+                    document.getElementById('letter-output-container').classList.remove('hidden');
+                } catch (error) {
+                    // Same fallback for letter writer
+                    if (window.location.hostname.includes('usercontent') || window.location.protocol === 'blob:') {
+                        document.getElementById('letter-output').value = "⚠️ Preview Mode: Backend API unavailable. Deploy to Vercel to use AI Letter Writer.";
+                        document.getElementById('letter-output-container').classList.remove('hidden');
+                    } else {
+                        throw error;
+                    }
+                }
+
+            } catch (error) {
+                showToast("Error generating letter. Please try again.");
+                console.error(error);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                lucide.createIcons();
+            }
+        }
+
+        window.copyLetter = () => {
+            const text = document.getElementById('letter-output');
+            text.select();
+            document.execCommand('copy');
+            showToast("पत्र कॉपी कर लिया गया!");
+        }
+
+        /* ================= START ================= */
+        // Explicitly calling initApp to ensure flow starts
+        initApp();
+        
+        // Popup Close Logic
+        document.addEventListener("DOMContentLoaded", () => {
+          const popup = document.getElementById("intro-popup");
+
+          if (!popup) return;
+
+          // screen par kahi bhi click = popup close
+          popup.addEventListener("click", () => {
+            popup.style.display = "none";
+          });
+        });
+
+        // ✅ FIXED: Falling Images Logic with Error Handling
+        document.addEventListener("DOMContentLoaded", () => {
+          const images = [
+            "images/image1.png",
+            "images/image2.png",
+            "images/image3.jpg",
+            "images/image4.png",
+            "images/image5.jpg",
+            "images/image6.jpg",
+            "images/image7.jpg",
+            "images/image8.jpg",
+            "images/image9.png",
+            "images/image10.jpg",
+            "images/image11.jpg",
+            "images/image12.jpg",
+            "images/image13.jpg",
+            "images/image14.jpg",
+            "images/image15.jpg",
+            "images/image16.jpg",
+            "images/image17.png",
+            "images/image18.png",
+            "images/image19.jpg",
+            "images/image20.png"
+          ];
+
+          const container = document.getElementById("falling-container");
+          
+          // Safety check: container must exist and screen must be large enough (optimization)
+          if (!container) return;
+
+          let index = 0;
+
+          function showFallingImage() {
+            // Create new image
+            const img = document.createElement("img");
+            img.src = images[index];
+            img.className = "falling-item";
+            img.alt = "Partner Logo";
+            
+            // Handle loading errors by skipping to next
+            img.onerror = () => {
+                img.remove();
+                index = (index + 1) % images.length;
+            };
+
+            // Clear old images slightly later to allow smooth transition if needed, 
+            // but for single item fall, clearing immediately is fine.
+            container.innerHTML = ""; 
+            container.appendChild(img);
+
+            index = (index + 1) % images.length;
+          }
+
+          // Start immediately
+          showFallingImage();
+
+          // Repeat loop matching animation duration
+          setInterval(showFallingImage, 4000);
+        });
+    </script>
+</body>
 </html>

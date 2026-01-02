@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message, history } = req.body;
+    const { message, context } = req.body;
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
     if (!GEMINI_API_KEY) {
@@ -28,8 +28,7 @@ export default async function handler(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [
-            ...(history || []),
-            { role: 'user', parts: [{ text: message }] }
+            { role: 'user', parts: [{ text: context ? `${context}\n\nUser Query: ${message}` : message }] }
           ],
           generationConfig: {
             temperature: 0.7,
@@ -54,8 +53,8 @@ export default async function handler(req, res) {
       return res.status(response.status).json({ error: data.error?.message || 'API error' });
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
-    return res.status(200).json({ reply });
+    // Return in the same format the frontend expects
+    return res.status(200).json(data);
 
   } catch (error) {
     console.error('Server error:', error);
