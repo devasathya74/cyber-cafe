@@ -1575,7 +1575,9 @@
             if(el) el.remove();
         }
 
-        // ✅ NEW: Call Vercel Backend Function
+        // ✅ Lovable AI Integration (Cloud Edge Function)
+        const SUPABASE_URL = "https://hkfqievikkwvhsicoqik.supabase.co";
+        
         async function callBackendAi(userQuery) {
             // Context from servicesData (use MergedServices values)
             const serviceList = Object.values(finalServices);
@@ -1594,9 +1596,8 @@
             4. If asked about shop timing, say 8:30 AM to 8:30 PM.
             5. Use formatting like bullet points for lists.`;
 
-            // Call our own backend API
             try {
-                const res = await fetch('/api/ai-chat', {
+                const res = await fetch(`${SUPABASE_URL}/functions/v1/ai-chat`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -1605,17 +1606,21 @@
                     })
                 });
 
-                if (!res.ok) throw new Error("API Error: " + res.status);
+                if (!res.ok) {
+                    if (res.status === 429) {
+                        return "⚠️ बहुत सारे रिक्वेस्ट। कृपया थोड़ी देर बाद प्रयास करें।";
+                    }
+                    if (res.status === 402) {
+                        return "⚠️ AI credits समाप्त। कृपया संपर्क करें।";
+                    }
+                    throw new Error("API Error: " + res.status);
+                }
 
                 const data = await res.json();
                 return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
             } catch (error) {
-                 console.error("Backend Call Failed:", error);
-                 // Fallback for Preview environment where /api doesn't exist
-                 if (window.location.hostname.includes('usercontent') || window.location.protocol === 'blob:') {
-                     return "⚠️ **नोट:** मैं अभी Preview मोड में हूँ। असली AI जवाब के लिए कृपया इस ऐप को Vercel पर Deploy करें। (Backend '/api/ai-chat' अभी उपलब्ध नहीं है)।";
-                 }
-                 throw error;
+                console.error("Backend Call Failed:", error);
+                throw error;
             }
         }
 
@@ -1647,12 +1652,13 @@
 
                 // Reuse the same backend function for letter writing
                 try {
-                    const res = await fetch('/api/ai-chat', {
+                    const res = await fetch(`${SUPABASE_URL}/functions/v1/ai-chat`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ 
                             message: prompt,
-                            context: "You are a professional letter writer."
+                            context: "You are a professional letter writer.",
+                            type: "letter"
                         })
                     });
 
@@ -1664,13 +1670,8 @@
                     document.getElementById('letter-output').value = letter;
                     document.getElementById('letter-output-container').classList.remove('hidden');
                 } catch (error) {
-                    // Same fallback for letter writer
-                    if (window.location.hostname.includes('usercontent') || window.location.protocol === 'blob:') {
-                        document.getElementById('letter-output').value = "⚠️ Preview Mode: Backend API unavailable. Deploy to Vercel to use AI Letter Writer.";
-                        document.getElementById('letter-output-container').classList.remove('hidden');
-                    } else {
-                        throw error;
-                    }
+                    console.error("Letter generation failed:", error);
+                    showToast("पत्र लिखने में समस्या। कृपया पुनः प्रयास करें।");
                 }
 
             } catch (error) {
